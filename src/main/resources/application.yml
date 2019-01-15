@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: microservice-zipkin-provider
+  zipkin:
+#    指定Zipkin基础地址
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+#      指定采用的请求百分比，默认0.1（即10%），因为分布式中请求量较大，应控制采样率
+      percentage: 1.0
+server:
+  port: 9442
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+#    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+info:
+  title: im a provider
